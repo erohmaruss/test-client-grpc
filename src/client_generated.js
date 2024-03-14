@@ -5,7 +5,7 @@ const { GetUserRequest } = require('./generated/getuser_pb');
 const { UserServiceClient } = require('./generated/getuser_grpc_pb');
 
 // Создание клиента
-const client = new UserServiceClient('localhost:50051', grpc.credentials.createInsecure());
+const client = new UserServiceClient('213.149.166.195:1666', grpc.credentials.createInsecure());
 
 // Создание и настройка запроса
 const request = new GetUserRequest();
