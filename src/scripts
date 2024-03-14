@@ -1,0 +1,5 @@
+//server
+protoc --go_out=./protobuf/generated/golang --go_opt=paths=source_relative --go-grpc_out=require_unimplemented_servers=false:./protobuf/generated/golang --go-grpc_opt=paths=source_relative ./protobuf/getuser.proto
+
+//js
+grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./generated --grpc_out=grpc_js:./generated --proto_path=./ getuser.proto

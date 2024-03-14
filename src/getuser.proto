@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package protobuff;
+
+option go_package = "chatbot-english/src/protobuf/generated/golang";
+// Enum for Content types
+enum ContentType {
+  UNKNOWN = 0; // Default value
+  TEXT = 1;
+  VIDEO = 2;
+  AUDIO = 3;
+}
+
+// Structure for Content
+message Content {
+  string name = 1;
+  ContentType type = 2;
+  string text = 3;
+  repeated string text_img_urls = 4;
+  string video = 5;
+  string audio = 6;
+}
+
+// Structure for User
+message User {
+  string name = 1;
+  Content content = 2;
+}
+
+// Message for user request by Telegram ID
+message GetUserRequest {
+  int64 telegram_id = 1; // Using int64 for Telegram ID
+}
+
+// Message for response with User data
+message GetUserResponse {
+  User user = 1;
+}
+
+service UserService {
+  rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+}
